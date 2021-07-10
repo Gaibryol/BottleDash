@@ -22,4 +22,9 @@ public class MoneyManager : MonoBehaviour
     {
         amount += num;
     }
+
+    public static void Clear()
+    {
+        amount = 0;
+    }
 }

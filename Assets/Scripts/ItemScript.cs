@@ -22,16 +22,17 @@ public class ItemScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     private void OnMouseDrag()
     {
         isHeld = true;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(mousePos.x, mousePos.y, 0);
+        float posY = mousePos.y + GetComponent<SpriteRenderer>().bounds.size.y / 2.5f;
+        transform.position = new Vector3(mousePos.x, posY, 0);
         MouseScript.heldItem = this.gameObject;
-        GetComponent<SpriteRenderer>().sortingOrder = 5;
+        GetComponent<SpriteRenderer>().sortingOrder = 10;
 
         if (inBasket)
         {
@@ -44,9 +45,10 @@ public class ItemScript : MonoBehaviour
     {
         isHeld = true;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = new Vector3(mousePos.x, mousePos.y, 0);
+        float posY = mousePos.y + GetComponent<SpriteRenderer>().bounds.size.y / 2.5f;
+        transform.position = new Vector3(mousePos.x, posY, 0);
         MouseScript.heldItem = this.gameObject;
-        GetComponent<SpriteRenderer>().sortingOrder = 5;
+        GetComponent<SpriteRenderer>().sortingOrder = 10;
 
         if (inBasket)
         {
@@ -64,7 +66,7 @@ public class ItemScript : MonoBehaviour
         if (MouseScript.overBasket != null)
         {
             MouseScript.overBasket.GetComponent<BinScript>().Add(this.gameObject);
-            GetComponent<SpriteRenderer>().sortingOrder = 1;
+            GetComponent<SpriteRenderer>().sortingOrder = MouseScript.overBasket.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder - 1;
             inBasket = true;
             basket = MouseScript.overBasket;
         }

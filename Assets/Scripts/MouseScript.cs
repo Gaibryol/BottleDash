@@ -18,6 +18,6 @@ public class MouseScript : MonoBehaviour
     {
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Debug.Log("Held: " + heldItem + " |  Basket: " + overBasket);
+        //Debug.Log("Held: " + heldItem + " |  Basket: " + overBasket);
     }
 }
