@@ -101,7 +101,7 @@ public class ItemScript : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sortingOrder = sortPos;
         }
-        else if (MouseScript.overBasket == null && lastBasket != null && MouseScript.overBelt == null)
+        else if (MouseScript.overBasket == null && lastBasket == null && MouseScript.overBelt == null)
         {
             transform.position = pickUpPos;
             GetComponent<SpriteRenderer>().sortingOrder = sortPos;

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class MoneyManager : MonoBehaviour
+public class ScoreTextScript : MonoBehaviour
 {
-    public static int amount;
 
     // Start is called before the first frame update
     void Start()
@@ -15,16 +16,6 @@ public class MoneyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    public static void Add(int num)
-    {
-        amount += num;
-    }
-
-    public static void Clear()
-    {
-        amount = 0;
+        GetComponent<TextMeshProUGUI>().text = "Score: " + MoneyManager.amount.ToString();
     }
 }
