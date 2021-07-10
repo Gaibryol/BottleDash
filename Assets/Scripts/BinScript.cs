@@ -14,15 +14,11 @@ public class BinScript : MonoBehaviour
 
     public List<GameObject> bottleList;
 
-    private float doubleTouchTimer;
-    private bool firstTouch;
-
     // Start is called before the first frame update
     void Start()
     {
         amount = 0;
         open = true;
-        firstTouch = true;
     }
 
     // Update is called once per frame
@@ -30,21 +26,11 @@ public class BinScript : MonoBehaviour
     {
         SpriteLogic();
         FullnessLogic();
-
-        if (doubleTouchTimer > 0)
-        {
-            doubleTouchTimer -= Time.deltaTime;
-        }
-        else if (doubleTouchTimer < 0)
-        {
-            doubleTouchTimer = 0;
-            firstTouch = true;
-        }
     }
 
     void SpriteLogic()
     {
-        // Lign up bottles in basket
+        // Line up bottles in basket
     }
 
     void FullnessLogic()
@@ -61,7 +47,7 @@ public class BinScript : MonoBehaviour
         }
     }
 
-    void Empty()
+    public void Empty()
     {
         for (int i = 0; i < bottleList.Count; i++)
         {
@@ -96,22 +82,6 @@ public class BinScript : MonoBehaviour
         if (collision.tag == "Mouse")
         {
             MouseScript.overBasket = null;
-        }
-    }
-
-    private void OnMouseDown()
-    {
-        if (firstTouch)
-        {
-            firstTouch = false;
-            doubleTouchTimer = 0.3f;
-            return;
-        }
-        if (!firstTouch && doubleTouchTimer > 0)
-        {
-            Empty();
-            firstTouch = true;
-            return;
         }
     }
 }

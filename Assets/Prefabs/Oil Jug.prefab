@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3382499967537103627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1369514, y: 1.1149671, z: 5}
+  m_LocalPosition: {x: -2.1369514, y: 1.1149671, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 07728c8feb1c84b429dbbdf7f43d3676, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,9 +100,11 @@ MonoBehaviour:
   isHeld: 0
   itemType: 50c
   value: 50
+  onBelt: 0
   inBasket: 0
   basket: {fileID: 0}
   moveSpeed: 0.01
+  sortPos: 2
 --- !u!61 &3382499967537103631
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class ItemScript : MonoBehaviour
     private Rigidbody2D rbody;
 
     public float moveSpeed;
+    public int sortPos;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +43,7 @@ public class ItemScript : MonoBehaviour
         float posY = mousePos.y + GetComponent<SpriteRenderer>().bounds.size.y / 2.5f;
         transform.position = new Vector3(mousePos.x, posY, 0);
         MouseScript.heldItem = this.gameObject;
-        GetComponent<SpriteRenderer>().sortingOrder = 20;
+        GetComponent<SpriteRenderer>().sortingOrder = 50;
 
         if (inBasket)
         {
@@ -60,7 +61,7 @@ public class ItemScript : MonoBehaviour
         float posY = mousePos.y + GetComponent<SpriteRenderer>().bounds.size.y / 2.5f;
         transform.position = new Vector3(mousePos.x, posY, 0);
         MouseScript.heldItem = this.gameObject;
-        GetComponent<SpriteRenderer>().sortingOrder = 20;
+        GetComponent<SpriteRenderer>().sortingOrder = 50;
         
         if (inBasket)
         {
@@ -76,12 +77,17 @@ public class ItemScript : MonoBehaviour
         isHeld = false;
         MouseScript.heldItem = null;
 
-        if (MouseScript.overBasket != null)
+        if (MouseScript.overBasket != null && MouseScript.overBasket.GetComponent<BinScript>().open)
         {
             MouseScript.overBasket.GetComponent<BinScript>().Add(this.gameObject);
-            GetComponent<SpriteRenderer>().sortingOrder = MouseScript.overBasket.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder - 1;
+            GetComponent<SpriteRenderer>().sortingOrder = MouseScript.overBasket.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder - 10 + sortPos;
             inBasket = true;
             basket = MouseScript.overBasket;
+        }
+        else if (MouseScript.overBasket != null && !MouseScript.overBasket.GetComponent<BinScript>().open)
+        {
+            transform.position = pickUpPos;
+            GetComponent<SpriteRenderer>().sortingOrder = sortPos;
         }
         else if (MouseScript.overBasket == null && lastBasket != null && MouseScript.overBelt == null)
         {
@@ -89,16 +95,16 @@ public class ItemScript : MonoBehaviour
             basket = lastBasket;
             inBasket = true;
             basket.GetComponent<BinScript>().Add(this.gameObject);
-            GetComponent<SpriteRenderer>().sortingOrder = MouseScript.overBasket.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder - 1;
+            GetComponent<SpriteRenderer>().sortingOrder = basket.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder - 10 + sortPos;
         }
         else if (MouseScript.overBasket == null && lastBasket != null && MouseScript.overBelt != null)
         {
-            GetComponent<SpriteRenderer>().sortingOrder = 5;
+            GetComponent<SpriteRenderer>().sortingOrder = sortPos;
         }
         else if (MouseScript.overBasket == null && lastBasket != null && MouseScript.overBelt == null)
         {
             transform.position = pickUpPos;
-            GetComponent<SpriteRenderer>().sortingOrder = 5;
+            GetComponent<SpriteRenderer>().sortingOrder = sortPos;
         }
     }
 
