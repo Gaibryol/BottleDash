@@ -31,6 +31,13 @@ public class ItemScript : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(mousePos.x, mousePos.y, 0);
         MouseScript.heldItem = this.gameObject;
+        GetComponent<SpriteRenderer>().sortingOrder = 5;
+
+        if (inBasket)
+        {
+            MouseScript.overBasket.GetComponent<BinScript>().bottleList.Remove(this.gameObject);
+            inBasket = false;
+        }
     }
 
     private void OnMouseDown()
@@ -39,11 +46,13 @@ public class ItemScript : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(mousePos.x, mousePos.y, 0);
         MouseScript.heldItem = this.gameObject;
+        GetComponent<SpriteRenderer>().sortingOrder = 5;
 
         if (inBasket)
         {
             MouseScript.overBasket.GetComponent<BinScript>().bottleList.Remove(this.gameObject);
             inBasket = false;
+            basket = null;
         }
     }
 
@@ -55,7 +64,7 @@ public class ItemScript : MonoBehaviour
         if (MouseScript.overBasket != null)
         {
             MouseScript.overBasket.GetComponent<BinScript>().Add(this.gameObject);
-
+            GetComponent<SpriteRenderer>().sortingOrder = 1;
             inBasket = true;
             basket = MouseScript.overBasket;
         }
