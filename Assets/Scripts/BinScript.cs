@@ -9,17 +9,16 @@ public class BinScript : MonoBehaviour
     public int maxItems;
     public int numItems;
 
-    public Sprite empty;
-    public Sprite quarter;
-    public Sprite half;
-    public Sprite threeQuarters;
-    public Sprite full;
-
     public bool open;
+    public int amount;
+
+    public List<GameObject> bottleList;
 
     // Start is called before the first frame update
     void Start()
     {
+        amount = 0;
+        open = true;
     }
 
     // Update is called once per frame
@@ -31,30 +30,13 @@ public class BinScript : MonoBehaviour
 
     void SpriteLogic()
     {
-        if (Mathf.RoundToInt((numItems / maxItems) * 100) < 25)
-        {
-            GetComponent<SpriteRenderer>().sprite = empty;
-        }
-        else if (Mathf.RoundToInt((numItems / maxItems) * 100) < 50 && Mathf.RoundToInt((numItems / maxItems) * 100) >= 25)
-        {
-            GetComponent<SpriteRenderer>().sprite = quarter;
-        }
-        else if (Mathf.RoundToInt((numItems / maxItems) * 100) < 75 && Mathf.RoundToInt((numItems / maxItems) * 100) >= 50)
-        {
-            GetComponent<SpriteRenderer>().sprite = half;
-        }
-        else if (Mathf.RoundToInt((numItems / maxItems) * 100) < 100 && Mathf.RoundToInt((numItems / maxItems) * 100) >= 75)
-        {
-            GetComponent<SpriteRenderer>().sprite = threeQuarters;
-        }
-        else if (Mathf.RoundToInt((numItems / maxItems) * 100) == 100)
-        {
-            GetComponent<SpriteRenderer>().sprite = full;
-        }
+        // Lign up bottles in basket
     }
 
     void FullnessLogic()
     {
+        numItems = bottleList.Count;
+
         if (Mathf.RoundToInt((numItems / maxItems) * 100) >= 100)
         {
             open = false;
@@ -65,16 +47,36 @@ public class BinScript : MonoBehaviour
         }
     }
 
+    void Empty()
+    {
+        for (int i = 0; i < bottleList.Count; i++)
+        {
+            if (bottleList[i].GetComponent<ItemScript>().itemType == binType)
+            {
+                amount += bottleList[i].GetComponent<ItemScript>().value;
+            }
+        }
+        MoneyManager.Add(amount);
+    }
+
+    public void Add(GameObject item)
+    {
+        bottleList.Add(item);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == binType)
+        if (collision.tag == "Mouse")
         {
-            ItemScript iScript = collision.gameObject.GetComponent<ItemScript>();
-            if (!iScript.isHeld)
-            {
-                numItems += 1;
-                iScript.Drop();
-            }
+            MouseScript.overBasket = this.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Mouse")
+        {
+            MouseScript.overBasket = null;
         }
     }
 }
