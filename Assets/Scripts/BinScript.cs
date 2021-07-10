@@ -75,6 +75,7 @@ public class BinScript : MonoBehaviour
         bottleList.Clear();
 
         MoneyManager.Add(amount);
+        amount = 0;
     }
 
     public void Add(GameObject item)

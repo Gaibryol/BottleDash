@@ -15,7 +15,7 @@ public class MoneyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        print(amount);
     }
 
     public static void Add(int num)

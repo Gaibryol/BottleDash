@@ -6,6 +6,7 @@ public class MouseScript : MonoBehaviour
 {
     public static GameObject heldItem;
     public static GameObject overBasket;
+    public static GameObject overBelt;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,6 @@ public class MouseScript : MonoBehaviour
     {
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        //Debug.Log("Held: " + heldItem + " |  Basket: " + overBasket);
+        Debug.Log("Held: " + heldItem + " |  Basket: " + overBasket + " | Belt:  " + overBelt);
     }
 }

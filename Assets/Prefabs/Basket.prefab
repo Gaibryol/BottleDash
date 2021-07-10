@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7555099069172193899}
   - component: {fileID: 7555099069172193898}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Basket Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: beacfdfa873d8d243834553710ad73c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1530852256030282107}
   - component: {fileID: 4542940276682863834}
   - component: {fileID: 8765583402112622833}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Basket
   m_TagString: Basket
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7555099070666507685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.56, y: -0.44, z: 0}
+  m_LocalPosition: {x: 7.56, y: -0.44, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7555099069172193899}
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -9
   m_Sprite: {fileID: 21300000, guid: 8a902e40b75077c4badcc285eefbfc98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
