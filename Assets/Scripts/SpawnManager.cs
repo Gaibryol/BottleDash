@@ -72,7 +72,8 @@ public class SpawnManager : MonoBehaviour
 
     private Vector2 GetRandomPosition()
     {
-        return new Vector2(Random.Range(topLeft.transform.position.x, topRight.transform.position.x), Random.Range(topRight.transform.position.y, bottomRight.transform.position.y));
+        Vector2 tempPos = new Vector2(Random.Range(topLeft.transform.position.x, topRight.transform.position.x), Random.Range(topRight.transform.position.y, bottomRight.transform.position.y));
+        return tempPos;
     }
 
     private void SpawnRandom()

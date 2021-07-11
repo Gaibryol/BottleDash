@@ -25,6 +25,9 @@ public class ItemScript : MonoBehaviour
 
     public bool dying;
 
+    private Vector3 spawnPos;
+    private bool spawning;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,11 @@ public class ItemScript : MonoBehaviour
         inBasket = false;
         onBelt = false;
         dying = false;
+
+        spawnPos = transform.position;
+        transform.position = new Vector2(spawnPos.x, spawnPos.y + 2);
+        GetComponent<SpriteRenderer>().color = new Color(GetComponent<SpriteRenderer>().color.r, GetComponent<SpriteRenderer>().color.g, GetComponent<SpriteRenderer>().color.b, 0);
+        spawning = true;
     }
 
     // Update is called once per frame
@@ -41,17 +49,31 @@ public class ItemScript : MonoBehaviour
     {
         ConveyorBelt();
 
+        if (spawning)
+        {
+            isHeld = false;
+            inBasket = false;
+            onBelt = false;
+            transform.Translate(new Vector2(0, -moveSpeed * Time.deltaTime));
+            GetComponent<SpriteRenderer>().color = new Color(GetComponent<SpriteRenderer>().color.r, GetComponent<SpriteRenderer>().color.g, GetComponent<SpriteRenderer>().color.b, GetComponent<SpriteRenderer>().color.a + Time.deltaTime);
+
+            if (transform.position.y <= spawnPos.y)
+            {
+                spawning = false;
+            }
+        }
+
         if (dying)
         {
             transform.Rotate(0, 0, 25 * Time.deltaTime);
-            GetComponent<SpriteRenderer>().color = new Color(GetComponent<SpriteRenderer>().color.r, GetComponent<SpriteRenderer>().color.b, GetComponent<SpriteRenderer>().color.g, GetComponent<SpriteRenderer>().color.a - Time.deltaTime);
+            GetComponent<SpriteRenderer>().color = new Color(GetComponent<SpriteRenderer>().color.r, GetComponent<SpriteRenderer>().color.g, GetComponent<SpriteRenderer>().color.b, GetComponent<SpriteRenderer>().color.a - Time.deltaTime);
             transform.Translate(new Vector2(-moveSpeed * Time.deltaTime, -moveSpeed / 2f * Time.deltaTime));
         }
     }
 
     private void OnMouseDrag()
     {
-        if (!dying)
+        if (!dying && !spawning)
         {
             onBelt = false;
             isHeld = true;
@@ -72,7 +94,7 @@ public class ItemScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!dying)
+        if (!dying && !spawning)
         {
             onBelt = false;
             pickUpPos = transform.position;
@@ -136,7 +158,7 @@ public class ItemScript : MonoBehaviour
 
     public void ConveyorBelt()
     {
-        if (!isHeld && !inBasket && onBelt && !dying)
+        if (!isHeld && !inBasket && onBelt && !dying && !spawning)
         {
             transform.Translate(new Vector2(-moveSpeed  * Time.deltaTime, 0));
         }
