@@ -13,15 +13,20 @@ public class SpawnManager : MonoBehaviour
     public float spawnCD;
     private float timer;
 
-    public GameObject level1;
-    public GameObject level2;
-    public GameObject level3;
+    public List<GameObject> levels;
+    public int currentLevelNum;
     public GameObject currentLevel;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = 0f;
+
+        if (currentLevel != null)
+        {
+            currentLevelNum = levels.IndexOf(currentLevel);
+            PlayLevel(currentLevelNum);
+        }
     }
 
     // Update is called once per frame
@@ -107,21 +112,23 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    public void PlayLevel1()
+    public void PlayLevel(int num)
     {
         timer = 0f;
-        currentLevel = level1;
-    }
-    
-    public void PlayLevel2()
-    {
-        timer = 0f;
-        currentLevel = level2;
+        MoneyManager.amount = 0;
+        var itemArray = GameObject.FindGameObjectsWithTag("Item");
+        for (int i = 0; i < itemArray.Length; i++)
+        {
+            Destroy(itemArray[i].gameObject);
+        }
+
+        currentLevelNum = num;
+        currentLevel = Instantiate(levels[num]);
     }
 
-    public void PlayLevel3()
+    public void Restart()
     {
-        timer = 0f;
-        currentLevel = level3;
+        // Restart Game
+        PlayLevel(currentLevelNum);
     }
 }

@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class PauseScript : MonoBehaviour
 {
     private GameObject pauseMenu;
-    public bool isPaused;
+    public static bool isPaused;
 
     public Sprite pauseA;
     public Sprite pauseB;
     public GameObject pauseButton;
+
+    public GameObject guideMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,7 @@ public class PauseScript : MonoBehaviour
         if (pauseMenu.activeSelf)
         {
             pauseMenu.SetActive(false);
+            guideMenu.SetActive(false);
         }
         else
         {
@@ -60,5 +63,22 @@ public class PauseScript : MonoBehaviour
         {
             pauseButton.GetComponent<Image>().sprite = pauseA;
         }
+    }
+
+    public void ToggleGuide()
+    {
+        if (guideMenu.activeSelf)
+        {
+            guideMenu.SetActive(false);
+        }
+        else if (!guideMenu.activeSelf)
+        {
+            guideMenu.SetActive(true);
+        }
+    }
+
+    public void ToMainMenu()
+    {
+        // Go To Main Menu
     }
 }

@@ -73,7 +73,7 @@ public class ItemScript : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        if (!dying && !spawning)
+        if (!dying && !spawning && !PauseScript.isPaused)
         {
             onBelt = false;
             isHeld = true;
@@ -94,7 +94,7 @@ public class ItemScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!dying && !spawning)
+        if (!dying && !spawning && !PauseScript.isPaused)
         {
             onBelt = false;
             pickUpPos = transform.position;
@@ -118,7 +118,7 @@ public class ItemScript : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!dying)
+        if (!dying && !spawning && !PauseScript.isPaused)
         {
             GetComponent<SpriteRenderer>().sprite = notSelected;
             isHeld = false;
