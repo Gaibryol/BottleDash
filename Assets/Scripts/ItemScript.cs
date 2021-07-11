@@ -20,10 +20,14 @@ public class ItemScript : MonoBehaviour
     public float moveSpeed;
     public int sortPos;
 
+    public Sprite notSelected;
+    public Sprite selected;
+
     // Start is called before the first frame update
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
+        notSelected = GetComponent<SpriteRenderer>().sprite;
         isHeld = false;
         inBasket = false;
         onBelt = false;
@@ -44,6 +48,7 @@ public class ItemScript : MonoBehaviour
         transform.position = new Vector3(mousePos.x, posY, 0);
         MouseScript.heldItem = this.gameObject;
         GetComponent<SpriteRenderer>().sortingOrder = 50;
+        GetComponent<SpriteRenderer>().sprite = selected;
 
         if (inBasket)
         {
@@ -62,6 +67,7 @@ public class ItemScript : MonoBehaviour
         transform.position = new Vector3(mousePos.x, posY, 0);
         MouseScript.heldItem = this.gameObject;
         GetComponent<SpriteRenderer>().sortingOrder = 50;
+        GetComponent<SpriteRenderer>().sprite = selected;
         
         if (inBasket)
         {
@@ -74,6 +80,7 @@ public class ItemScript : MonoBehaviour
 
     private void OnMouseUp()
     {
+        GetComponent<SpriteRenderer>().sprite = notSelected;
         isHeld = false;
         MouseScript.heldItem = null;
 

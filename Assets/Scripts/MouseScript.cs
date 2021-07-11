@@ -23,7 +23,7 @@ public class MouseScript : MonoBehaviour
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         BasketCheck();
-        Debug.Log("Held: " + heldItem + " |  Basket: " + overBasket + " | Belt:  " + overBelt);
+        //Debug.Log("Held: " + heldItem + " |  Basket: " + overBasket + " | Belt:  " + overBelt);
     }
 
     private void BasketCheck()

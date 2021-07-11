@@ -261,6 +261,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yogurt Bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 3257580735947273101, guid: 683822313e32c164ab1862be9a3a7380, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683822313e32c164ab1862be9a3a7380, type: 3}
 --- !u!1001 &223356488
@@ -389,7 +393,11 @@ MonoBehaviour:
   topRight: {fileID: 1757435419}
   bottomRight: {fileID: 1662156201}
   spawning: 1
-  spawnCD: 3
+  spawnCD: 1.5
+  level1: {fileID: 1891313836}
+  level2: {fileID: 0}
+  level3: {fileID: 0}
+  currentLevel: {fileID: 1891313836}
 --- !u!4 &438957096
 Transform:
   m_ObjectHideFlags: 0
@@ -577,6 +585,10 @@ PrefabInstance:
     - target: {fileID: 7657947124262190027, guid: 2f551e0947a49034886b1207819c215e, type: 3}
       propertyPath: m_Name
       value: Juice Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657947124262190027, guid: 2f551e0947a49034886b1207819c215e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f551e0947a49034886b1207819c215e, type: 3}
@@ -865,6 +877,10 @@ PrefabInstance:
     - target: {fileID: 6032054966647857558, guid: 3f9c36a6d81b05546abc0801e8c02100, type: 3}
       propertyPath: m_Name
       value: Water Bottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032054966647857558, guid: 3f9c36a6d81b05546abc0801e8c02100, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6032054966647857559, guid: 3f9c36a6d81b05546abc0801e8c02100, type: 3}
       propertyPath: m_RootOrder
@@ -1216,6 +1232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pop Bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 715093942054301911, guid: 77d26e1577e27fa4d8fe80d48a9c1585, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d26e1577e27fa4d8fe80d48a9c1585, type: 3}
 --- !u!1 &1231597076
@@ -1545,6 +1565,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Can
       objectReference: {fileID: 0}
+    - target: {fileID: 6636000073541343188, guid: 62eb021a5de18cd42a740752d38f0fc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6636000073541343189, guid: 62eb021a5de18cd42a740752d38f0fc8, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -1702,6 +1726,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67b0894b96bb9b64dae1f6f0b3fbf8d7, type: 3}
+--- !u!1 &1891313836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1891313837}
+  - component: {fileID: 1891313838}
+  m_Layer: 0
+  m_Name: Level 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1891313837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891313836}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0924692, y: -0.31913084, z: -1.0992146}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1891313838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891313836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf9b825070d9ac449726d8e058be638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bottles: 0100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  quota: 200
+  spawnRate: 1.5
+  bottleList: []
+  sManager: {fileID: 438957094}
 --- !u!1 &1940904107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,6 +2035,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Juice Carton
       objectReference: {fileID: 0}
+    - target: {fileID: 2398647361226504345, guid: db0ea3e3f353bb74085adf5382627120, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db0ea3e3f353bb74085adf5382627120, type: 3}
 --- !u!1001 &271427258153040672
@@ -2020,6 +2096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oil Jug
       objectReference: {fileID: 0}
+    - target: {fileID: 3382499967537103627, guid: 20e5cab1b1d2e844e9b9144dd71153bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20e5cab1b1d2e844e9b9144dd71153bf, type: 3}
 --- !u!1001 &6099581382139311038
@@ -2032,6 +2112,10 @@ PrefabInstance:
     - target: {fileID: 3377238853743424148, guid: 351320cb614e91d4599d1f978383a11b, type: 3}
       propertyPath: m_Name
       value: Champagne Bottle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3377238853743424148, guid: 351320cb614e91d4599d1f978383a11b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3377238853743424149, guid: 351320cb614e91d4599d1f978383a11b, type: 3}
       propertyPath: m_RootOrder
@@ -2171,6 +2255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Glass Bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 7725676118161658406, guid: 1ea9bcf6a1f981f439e79c5699b30ca0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7725676118161658407, guid: 1ea9bcf6a1f981f439e79c5699b30ca0, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -2272,6 +2360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wine Bottle
       objectReference: {fileID: 0}
+    - target: {fileID: 205300451190733363, guid: 350e7ff9106af5141b88aa95661c9bf9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350e7ff9106af5141b88aa95661c9bf9, type: 3}
 --- !u!1001 &8846366779570639666
@@ -2328,6 +2420,10 @@ PrefabInstance:
     - target: {fileID: 8063177260674799827, guid: b07f67fab39f8f241ba61f46e746d9a8, type: 3}
       propertyPath: m_Name
       value: Milk Jug
+      objectReference: {fileID: 0}
+    - target: {fileID: 8063177260674799827, guid: b07f67fab39f8f241ba61f46e746d9a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b07f67fab39f8f241ba61f46e746d9a8, type: 3}

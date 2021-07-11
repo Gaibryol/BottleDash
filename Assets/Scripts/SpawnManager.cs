@@ -13,29 +13,61 @@ public class SpawnManager : MonoBehaviour
     public float spawnCD;
     private float timer;
 
+    public GameObject level1;
+    public GameObject level2;
+    public GameObject level3;
+    public GameObject currentLevel;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer < spawnCD)
+        if (currentLevel == null)
         {
-            timer += Time.deltaTime;
+            if (timer < spawnCD)
+            {
+                timer += Time.deltaTime;
+            }
+            else if (timer >= spawnCD && spawning)
+            {
+                SpawnRandom();
+                timer = 0;
+                spawnCD += Random.Range(-0.5f, 0.5f);
+            }
         }
-        else if (timer >= spawnCD && spawning)
+        else
         {
-            SpawnRandom();
-            timer = 0;
+            if (timer < currentLevel.GetComponent<LevelScript>().spawnRate && currentLevel.GetComponent<LevelScript>().bottleList.Count > 0)
+            {
+                timer += Time.deltaTime;
+            }
+            else if (timer >= currentLevel.GetComponent<LevelScript>().spawnRate && currentLevel.GetComponent<LevelScript>().bottleList.Count > 0)
+            {
+                timer = 0;
+                spawnCD += Random.Range(-0.5f, 0.5f);
+                Spawn();
+            }
+
+            CheckQuota();
         }
     }
 
     private GameObject GetRandomBottle()
     {
         return bottles[Mathf.RoundToInt(Random.Range(0, bottles.Count - 1))];
+    }
+
+    private GameObject GetRandomFromLevel()
+    {
+        GameObject bottle = currentLevel.GetComponent<LevelScript>().bottleList[Mathf.RoundToInt(Random.Range(0, currentLevel.GetComponent<LevelScript>().bottleList.Count - 1))];
+        currentLevel.GetComponent<LevelScript>().bottleList.Remove(bottle);
+        return bottle;
+
     }
 
     private Vector2 GetRandomPosition()
@@ -46,5 +78,31 @@ public class SpawnManager : MonoBehaviour
     private void SpawnRandom()
     {
         Instantiate(GetRandomBottle(), GetRandomPosition(), Quaternion.identity);
+    }
+
+    private void Spawn()
+    {
+        Instantiate(GetRandomFromLevel(), GetRandomPosition(), Quaternion.identity);
+    }
+
+    private void CheckQuota()
+    {
+        if (currentLevel.GetComponent<LevelScript>().bottleList.Count == 0)
+        {
+            timer += Time.deltaTime;
+        }
+        if (timer > 10f)
+        {
+            if (MoneyManager.amount < currentLevel.GetComponent<LevelScript>().quota)
+            {
+                // Lose
+                print("Lose");
+            }
+            else if (MoneyManager.amount >= currentLevel.GetComponent<LevelScript>().quota)
+            {
+                //Win
+                print("Win");
+            }
+        }
     }
 }

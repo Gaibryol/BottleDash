@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: f244421888f57994ea19c6edadb1fb0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06bd77035e9190749a5f83c0a571d578, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.38, y: 2.54}
+  m_Size: {x: 0.73, y: 2.53}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,6 +105,8 @@ MonoBehaviour:
   basket: {fileID: 0}
   moveSpeed: 0.01
   sortPos: 3
+  notSelected: {fileID: 0}
+  selected: {fileID: 21300000, guid: c2c2c569a122c684d9308f36771ff78f, type: 3}
 --- !u!61 &205300451190733367
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,7 +125,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.73, y: 2.53}
-    newSize: {x: 2.38, y: 2.54}
+    newSize: {x: 0.73, y: 2.53}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
