@@ -37,5 +37,10 @@ public class FlashScript : MonoBehaviour
                 timer = delay;
             }
         }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = regular;
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
 }

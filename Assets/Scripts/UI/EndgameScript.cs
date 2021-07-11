@@ -17,4 +17,14 @@ public class EndgameScript : MonoBehaviour
     {
         
     }
+
+    public void Lose()
+    {
+        endgame.SetActive(true);
+    }
+
+    public void Win()
+    {
+        endgame.SetActive(true);
+    }
 }

@@ -75,20 +75,9 @@ public class ItemScript : MonoBehaviour
     {
         if (!dying && !spawning && !PauseScript.isPaused)
         {
-            onBelt = false;
-            isHeld = true;
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float posY = mousePos.y + GetComponent<SpriteRenderer>().bounds.size.y / 2.5f;
             transform.position = new Vector3(mousePos.x, posY, 0);
-            MouseScript.heldItem = this.gameObject;
-            GetComponent<SpriteRenderer>().sortingOrder = 50;
-            GetComponent<SpriteRenderer>().sprite = selected;
-
-            if (inBasket)
-            {
-                MouseScript.overBasket.GetComponent<BinScript>().bottleList.Remove(this.gameObject);
-                inBasket = false;
-            }
         }
     }
 

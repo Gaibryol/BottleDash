@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelScript : MonoBehaviour
 {
-    public int[] bottles;
+    public int[] numBottles;
     public int quota;
     public float spawnRate;
     public List<GameObject> bottleList;
@@ -16,19 +16,20 @@ public class LevelScript : MonoBehaviour
     {
         MakeList();
         max = bottleList.Count;
+        sManager = GameObject.FindGameObjectWithTag("Spawner");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        print("num: " + bottleList.Count);
     }
 
     private void MakeList()
     {
-        for (int i = 0; i < bottles.Length; i++)
+        for (int i = 0; i < numBottles.Length; i++)
         {
-            for (int j = 0; j < bottles[i]; j++)
+            for (int j = 0; j < numBottles[i]; j++)
             {
                 bottleList.Add(sManager.GetComponent<SpawnManager>().bottles[i]);
             }

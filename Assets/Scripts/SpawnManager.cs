@@ -17,16 +17,21 @@ public class SpawnManager : MonoBehaviour
     public int currentLevelNum;
     public GameObject currentLevel;
 
+    public GameObject endgame;
+
+    private int num;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = 0f;
 
-        if (currentLevel != null)
+        if (currentLevelNum != -1)
         {
-            currentLevelNum = levels.IndexOf(currentLevel);
             PlayLevel(currentLevelNum);
         }
+
+        num = 0;
     }
 
     // Update is called once per frame
@@ -69,7 +74,7 @@ public class SpawnManager : MonoBehaviour
 
     private GameObject GetRandomFromLevel()
     {
-        GameObject bottle = currentLevel.GetComponent<LevelScript>().bottleList[Mathf.RoundToInt(Random.Range(0, currentLevel.GetComponent<LevelScript>().bottleList.Count - 1))];
+        GameObject bottle = currentLevel.GetComponent<LevelScript>().bottleList[Random.Range(0, currentLevel.GetComponent<LevelScript>().bottleList.Count - 1)];
         currentLevel.GetComponent<LevelScript>().bottleList.Remove(bottle);
         return bottle;
 
@@ -89,6 +94,8 @@ public class SpawnManager : MonoBehaviour
     private void Spawn()
     {
         Instantiate(GetRandomFromLevel(), GetRandomPosition(), Quaternion.identity);
+
+        num += 1;
     }
 
     private void CheckQuota()
@@ -103,11 +110,13 @@ public class SpawnManager : MonoBehaviour
             {
                 // Lose
                 print("Lose");
+                endgame.GetComponent<EndgameScript>().Lose();
             }
             else if (MoneyManager.amount >= currentLevel.GetComponent<LevelScript>().quota)
             {
                 //Win
                 print("Win");
+                endgame.GetComponent<EndgameScript>().Win();
             }
         }
     }
@@ -121,9 +130,9 @@ public class SpawnManager : MonoBehaviour
         {
             Destroy(itemArray[i].gameObject);
         }
-
         currentLevelNum = num;
         currentLevel = Instantiate(levels[num]);
+        currentLevel.GetComponent<LevelScript>().sManager = this.gameObject;
     }
 
     public void Restart()

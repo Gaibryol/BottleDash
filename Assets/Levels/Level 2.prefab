@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf9b825070d9ac449726d8e058be638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bottles: 0200000002000000020000000200000002000000020000000200000002000000020000000200000002000000
+  numBottles: 
   quota: 500
   spawnRate: 0.75
   bottleList: []
   sManager: {fileID: 0}
+  max: 0

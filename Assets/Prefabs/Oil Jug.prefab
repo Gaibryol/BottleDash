@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHeld: 0
-  itemType: 50c
-  value: 50
+  itemType: 25c
+  value: 25
   onBelt: 0
   inBasket: 0
   basket: {fileID: 0}
