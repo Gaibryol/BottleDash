@@ -105,4 +105,22 @@ public class SpawnManager : MonoBehaviour
             }
         }
     }
+
+    public void PlayLevel1()
+    {
+        timer = 0f;
+        currentLevel = level1;
+    }
+    
+    public void PlayLevel2()
+    {
+        timer = 0f;
+        currentLevel = level2;
+    }
+
+    public void PlayLevel3()
+    {
+        timer = 0f;
+        currentLevel = level3;
+    }
 }

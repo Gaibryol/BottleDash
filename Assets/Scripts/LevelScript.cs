@@ -9,11 +9,13 @@ public class LevelScript : MonoBehaviour
     public float spawnRate;
     public List<GameObject> bottleList;
     public GameObject sManager;
+    public int max;
 
     // Start is called before the first frame update
     void Start()
     {
         MakeList();
+        max = bottleList.Count;
     }
 
     // Update is called once per frame

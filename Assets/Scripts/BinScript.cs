@@ -40,10 +40,12 @@ public class BinScript : MonoBehaviour
         if (Mathf.RoundToInt((numItems / maxItems) * 100) >= 100)
         {
             open = false;
+            GetComponent<FlashScript>().isFlashing = true;
         }
         else
         {
             open = true;
+            GetComponent<FlashScript>().isFlashing = false;
         }
     }
 

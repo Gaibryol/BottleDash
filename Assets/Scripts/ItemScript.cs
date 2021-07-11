@@ -45,7 +45,7 @@ public class ItemScript : MonoBehaviour
         {
             transform.Rotate(0, 0, 25 * Time.deltaTime);
             GetComponent<SpriteRenderer>().color = new Color(GetComponent<SpriteRenderer>().color.r, GetComponent<SpriteRenderer>().color.b, GetComponent<SpriteRenderer>().color.g, GetComponent<SpriteRenderer>().color.a - Time.deltaTime);
-            transform.Translate(new Vector2(-moveSpeed, -moveSpeed / 2f));
+            transform.Translate(new Vector2(-moveSpeed * Time.deltaTime, -moveSpeed / 2f * Time.deltaTime));
         }
     }
 
@@ -138,7 +138,7 @@ public class ItemScript : MonoBehaviour
     {
         if (!isHeld && !inBasket && onBelt && !dying)
         {
-            transform.Translate(new Vector2(-moveSpeed, 0));
+            transform.Translate(new Vector2(-moveSpeed  * Time.deltaTime, 0));
         }
     }
 

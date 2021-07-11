@@ -103,10 +103,11 @@ MonoBehaviour:
   onBelt: 0
   inBasket: 0
   basket: {fileID: 0}
-  moveSpeed: 0.025
+  moveSpeed: 1.85
   sortPos: 6
   notSelected: {fileID: 0}
   selected: {fileID: 21300000, guid: d92f46d7a813403459ca9ddad5342e1f, type: 3}
+  dying: 0
 --- !u!61 &3257580735947273097
 BoxCollider2D:
   m_ObjectHideFlags: 0

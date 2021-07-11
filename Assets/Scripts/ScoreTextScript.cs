@@ -6,6 +6,7 @@ using TMPro;
 
 public class ScoreTextScript : MonoBehaviour
 {
+    public GameObject sManager;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,6 @@ public class ScoreTextScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<TextMeshProUGUI>().text = "Score: " + MoneyManager.amount.ToString();
+        GetComponent<TextMeshProUGUI>().text = MoneyManager.amount.ToString() + " / " + sManager.GetComponent<SpawnManager>().currentLevel.GetComponent<LevelScript>().quota;
     }
 }
