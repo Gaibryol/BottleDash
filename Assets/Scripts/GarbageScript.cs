@@ -20,7 +20,7 @@ public class GarbageScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Item")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<ItemScript>().Kill();
         }
     }
 }

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bottles: 0100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-  quota: 200
-  spawnRate: 1.5
+  quota: 300
+  spawnRate: 1
   bottleList: []
   sManager: {fileID: 0}

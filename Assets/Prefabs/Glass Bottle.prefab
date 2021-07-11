@@ -103,7 +103,7 @@ MonoBehaviour:
   onBelt: 0
   inBasket: 0
   basket: {fileID: 0}
-  moveSpeed: 0.01
+  moveSpeed: 0.025
   sortPos: 4
   notSelected: {fileID: 0}
   selected: {fileID: 21300000, guid: 8cf3a2e77d6f2ff438e47e0b5ce6f18b, type: 3}
