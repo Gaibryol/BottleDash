@@ -27,12 +27,10 @@ public class FlashScript : MonoBehaviour
                 if (GetComponent<SpriteRenderer>().sprite == regular)
                 {
                     GetComponent<SpriteRenderer>().sprite = flash;
-                    transform.GetChild(0).gameObject.SetActive(false);
                 }
                 else
                 {
                     GetComponent<SpriteRenderer>().sprite = regular;
-                    transform.GetChild(0).gameObject.SetActive(true);
                 }
                 timer = delay;
             }
@@ -40,7 +38,6 @@ public class FlashScript : MonoBehaviour
         else
         {
             GetComponent<SpriteRenderer>().sprite = regular;
-            transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 }

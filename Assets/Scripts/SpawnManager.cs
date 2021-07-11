@@ -11,6 +11,7 @@ public class SpawnManager : MonoBehaviour
 
     public bool spawning;
     public float spawnCD;
+    public float variedSpawn;
     private float timer;
 
     public List<GameObject> levels;
@@ -20,15 +21,22 @@ public class SpawnManager : MonoBehaviour
     public GameObject endgame;
 
     private int num;
+    public float gameTimer;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = 0f;
+        variedSpawn = spawnCD;
+        gameTimer = 0f;
 
         if (currentLevelNum != -1)
         {
             PlayLevel(currentLevelNum);
+        }
+        else if (currentLevelNum == -1)
+        {
+            PlayEndless();
         }
 
         num = 0;
@@ -37,30 +45,38 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameTimer += Time.deltaTime;
+
         if (currentLevel == null)
         {
-            if (timer < spawnCD)
+            spawnCD = spawnCD - (gameTimer / 200000f);
+            if (spawnCD <= 0.4f)
+            {
+                spawnCD = 0.4f;
+            }
+
+            if (timer < variedSpawn)
             {
                 timer += Time.deltaTime;
             }
-            else if (timer >= spawnCD && spawning)
+            else if (timer >= variedSpawn && spawning)
             {
                 SpawnRandom();
                 timer = 0;
-                spawnCD += Random.Range(-0.5f, 0.5f);
+                variedSpawn = spawnCD + Random.Range(-0.25f, 0.25f);
             }
         }
         else
         {
-            if (timer < currentLevel.GetComponent<LevelScript>().spawnRate && currentLevel.GetComponent<LevelScript>().bottleList.Count > 0)
+            if (timer < variedSpawn && currentLevel.GetComponent<LevelScript>().bottleList.Count > 0)
             {
                 timer += Time.deltaTime;
             }
-            else if (timer >= currentLevel.GetComponent<LevelScript>().spawnRate && currentLevel.GetComponent<LevelScript>().bottleList.Count > 0)
+            else if (timer >= variedSpawn && currentLevel.GetComponent<LevelScript>().bottleList.Count > 0)
             {
                 timer = 0;
-                spawnCD += Random.Range(-0.5f, 0.5f);
                 Spawn();
+                variedSpawn = currentLevel.GetComponent<LevelScript>().spawnRate + Random.Range(-0.5f, 0.5f);
             }
 
             CheckQuota();
@@ -106,6 +122,12 @@ public class SpawnManager : MonoBehaviour
         }
         if (timer > 10f)
         {
+            var binList = GameObject.FindGameObjectsWithTag("Basket");
+            for (int i = 0; i < binList.Length; i++)
+            {
+                binList[i].GetComponent<BinScript>().Empty();
+            }
+
             if (MoneyManager.amount < currentLevel.GetComponent<LevelScript>().quota)
             {
                 // Lose
@@ -133,11 +155,34 @@ public class SpawnManager : MonoBehaviour
         currentLevelNum = num;
         currentLevel = Instantiate(levels[num]);
         currentLevel.GetComponent<LevelScript>().sManager = this.gameObject;
+        variedSpawn = currentLevel.GetComponent<LevelScript>().spawnRate;
+    }
+
+    public void PlayEndless()
+    {
+        timer = 0f;
+        MoneyManager.amount = 0;
+        var itemArray = GameObject.FindGameObjectsWithTag("Item");
+        for (int i = 0; i < itemArray.Length; i++)
+        {
+            Destroy(itemArray[i].gameObject);
+        }
+        currentLevelNum = -1;
+        currentLevel = null;
+        spawnCD = 1.5f;
+        variedSpawn = spawnCD;
     }
 
     public void Restart()
     {
         // Restart Game
-        PlayLevel(currentLevelNum);
+        if (currentLevelNum != -1)
+        {
+            PlayLevel(currentLevelNum);
+        }
+        else if (currentLevelNum == -1)
+        {
+            PlayEndless();
+        }
     }
 }

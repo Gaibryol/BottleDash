@@ -18,6 +18,14 @@ public class ProgressScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Slider>().value = GetComponent<Slider>().maxValue - Mathf.RoundToInt(((float)sScript.currentLevel.GetComponent<LevelScript>().bottleList.Count / (float)sScript.currentLevel.GetComponent<LevelScript>().max) * 100);
+        if (sScript.currentLevelNum == -1)
+        {
+            // Change to lives
+        }
+        else
+        {
+            // Show Progress
+            GetComponent<Slider>().value = GetComponent<Slider>().maxValue - Mathf.RoundToInt(((float)sScript.currentLevel.GetComponent<LevelScript>().bottleList.Count / (float)sScript.currentLevel.GetComponent<LevelScript>().max) * 100);
+        }
     }
 }

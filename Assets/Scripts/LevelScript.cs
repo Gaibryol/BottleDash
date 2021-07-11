@@ -22,7 +22,7 @@ public class LevelScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("num: " + bottleList.Count);
+
     }
 
     private void MakeList()

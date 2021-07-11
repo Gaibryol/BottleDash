@@ -78,6 +78,9 @@ public class ItemScript : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float posY = mousePos.y + GetComponent<SpriteRenderer>().bounds.size.y / 2.5f;
             transform.position = new Vector3(mousePos.x, posY, 0);
+
+            GetComponent<SpriteRenderer>().sortingOrder = 50;
+            GetComponent<SpriteRenderer>().sprite = selected;
         }
     }
 
