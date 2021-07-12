@@ -76,7 +76,7 @@ public class EndgameScript : MonoBehaviour
             Invoke("Win", 2f);
             endgame = panel;
 
-            level.GetComponent<TextMeshProUGUI>().text = "Level " + sScript.currentLevelNum + 1;
+            level.GetComponent<TextMeshProUGUI>().text = "Level " + (sScript.currentLevelNum + 1).ToString();
             coins.GetComponent<TextMeshProUGUI>().text = MoneyManager.amount.ToString();
             numCollect.GetComponent<TextMeshProUGUI>().text = sScript.numCollect.ToString();
         }
@@ -85,7 +85,7 @@ public class EndgameScript : MonoBehaviour
             Invoke("Lose", 2f);
             endgame = panel;
 
-            level.GetComponent<TextMeshProUGUI>().text = "Level " + sScript.currentLevelNum + 1;
+            level.GetComponent<TextMeshProUGUI>().text = "Level " + (sScript.currentLevelNum + 1).ToString();
             coins.GetComponent<TextMeshProUGUI>().text = MoneyManager.amount.ToString();
             numCollect.GetComponent<TextMeshProUGUI>().text = sScript.numCollect.ToString();
         }
@@ -98,8 +98,6 @@ public class EndgameScript : MonoBehaviour
 
             Invoke("Endless", 2f);
             endgame = endlessPanel;
-
-
         }
         fading = true;
         endgame.SetActive(true);
