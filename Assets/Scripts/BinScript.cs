@@ -74,6 +74,18 @@ public class BinScript : MonoBehaviour
         amount = 0;
     }
 
+    public void Clear()
+    {
+        for (int i = 0; i < bottleList.Count; i++)
+        {
+            Destroy(bottleList[i]);
+        }
+
+        bottleList.Clear();
+        numItems = 0;
+        amount = 0;
+    }
+
     public void Add(GameObject item)
     {
         bottleList.Add(item);

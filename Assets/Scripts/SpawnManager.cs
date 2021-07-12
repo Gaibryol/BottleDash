@@ -191,6 +191,11 @@ public class SpawnManager : MonoBehaviour
         {
             Destroy(itemArray[i].gameObject);
         }
+        var binArray = GameObject.FindGameObjectsWithTag("Basket");
+        for (int i = 0; i < binArray.Length; i++)
+        {
+            binArray[i].GetComponent<BinScript>().Clear();
+        }
         currentLevelNum = num;
         currentLevel = Instantiate(levels[num]);
         currentLevel.GetComponent<LevelScript>().sManager = this.gameObject;
@@ -213,6 +218,11 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < itemArray.Length; i++)
         {
             Destroy(itemArray[i].gameObject);
+        }
+        var binArray = GameObject.FindGameObjectsWithTag("Basket");
+        for (int i = 0; i < binArray.Length; i++)
+        {
+            binArray[i].GetComponent<BinScript>().Clear();
         }
         currentLevelNum = -1;
         currentLevel = null;
