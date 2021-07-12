@@ -108,6 +108,10 @@ MonoBehaviour:
   notSelected: {fileID: 0}
   selected: {fileID: 21300000, guid: c2c2c569a122c684d9308f36771ff78f, type: 3}
   dying: 0
+  effectManager: {fileID: 0}
+  pickUp: {fileID: 8300000, guid: 4b4f4f0c936328244abe4b5552ad9cae, type: 3}
+  putDown: {fileID: 8300000, guid: e4f898a90158bcc46a54951faee13194, type: 3}
+  trash: {fileID: 8300000, guid: aafcf3494c25dee4586ed679678a81dd, type: 3}
 --- !u!61 &205300451190733367
 BoxCollider2D:
   m_ObjectHideFlags: 0

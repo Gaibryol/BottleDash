@@ -14,11 +14,17 @@ public class BinScript : MonoBehaviour
 
     public List<GameObject> bottleList;
 
+    public GameObject effectManager;
+    public GameObject spawner;
+    private SpawnManager sScript;
+    public AudioClip swap;
+
     // Start is called before the first frame update
     void Start()
     {
         amount = 0;
         open = true;
+        sScript = spawner.GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -51,11 +57,13 @@ public class BinScript : MonoBehaviour
 
     public void Empty()
     {
+        effectManager.GetComponent<AudioSource>().PlayOneShot(swap);
         for (int i = 0; i < bottleList.Count; i++)
         {
             if (bottleList[i].GetComponent<ItemScript>().itemType == binType)
             {
                 amount += bottleList[i].GetComponent<ItemScript>().value;
+                sScript.numCollect += 1;
             }
             Destroy(bottleList[i]);
         }

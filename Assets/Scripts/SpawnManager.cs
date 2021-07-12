@@ -20,8 +20,19 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject endgame;
 
-    private int num;
+    public int numCollect;
     public float gameTimer;
+
+    public GameObject musicManager;
+    public GameObject effectManager;
+    public AudioClip quotaReached;
+
+    private bool done;
+    public int numDrop;
+    public int maxDrop;
+
+    public bool playing;
+    private bool playedQuota;
 
     // Start is called before the first frame update
     void Start()
@@ -29,57 +40,63 @@ public class SpawnManager : MonoBehaviour
         timer = 0f;
         variedSpawn = spawnCD;
         gameTimer = 0f;
+        numDrop = 0;
+        maxDrop = 10;
+        playing = false;
 
-        if (currentLevelNum != -1)
-        {
-            PlayLevel(currentLevelNum);
-        }
-        else if (currentLevelNum == -1)
-        {
-            PlayEndless();
-        }
+        numCollect = 0;
+        done = false;
+        playedQuota = false;
 
-        num = 0;
+        if (!playing)
+        {
+            effectManager.GetComponent<AudioSource>().Play();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameTimer += Time.deltaTime;
-
-        if (currentLevel == null)
+        if (playing)
         {
-            spawnCD = spawnCD - (gameTimer / 200000f);
-            if (spawnCD <= 0.4f)
-            {
-                spawnCD = 0.4f;
-            }
+            gameTimer += Time.deltaTime;
 
-            if (timer < variedSpawn)
+            if (currentLevel == null)
             {
-                timer += Time.deltaTime;
-            }
-            else if (timer >= variedSpawn && spawning)
-            {
-                SpawnRandom();
-                timer = 0;
-                variedSpawn = spawnCD + Random.Range(-0.25f, 0.25f);
-            }
-        }
-        else
-        {
-            if (timer < variedSpawn && currentLevel.GetComponent<LevelScript>().bottleList.Count > 0)
-            {
-                timer += Time.deltaTime;
-            }
-            else if (timer >= variedSpawn && currentLevel.GetComponent<LevelScript>().bottleList.Count > 0)
-            {
-                timer = 0;
-                Spawn();
-                variedSpawn = currentLevel.GetComponent<LevelScript>().spawnRate + Random.Range(-0.5f, 0.5f);
-            }
+                spawnCD = spawnCD - (gameTimer / 200000f);
+                if (spawnCD <= 0.4f)
+                {
+                    spawnCD = 0.4f;
+                }
 
-            CheckQuota();
+                if (timer < variedSpawn)
+                {
+                    timer += Time.deltaTime;
+                }
+                else if (timer >= variedSpawn && spawning)
+                {
+                    SpawnRandom();
+                    timer = 0;
+                    variedSpawn = spawnCD + Random.Range(-0.25f, 0.25f);
+                }
+
+                CheckEndless();
+            }
+            else
+            {
+                if (timer < variedSpawn && currentLevel.GetComponent<LevelScript>().bottleList.Count > 0)
+                {
+                    timer += Time.deltaTime;
+                }
+                else if (timer >= variedSpawn && currentLevel.GetComponent<LevelScript>().bottleList.Count > 0)
+                {
+                    timer = 0;
+                    Spawn();
+                    variedSpawn = currentLevel.GetComponent<LevelScript>().spawnRate + Random.Range(-0.5f, 0.5f);
+                }
+
+                CheckQuota();
+            }
         }
     }
 
@@ -104,42 +121,64 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnRandom()
     {
-        Instantiate(GetRandomBottle(), GetRandomPosition(), Quaternion.identity);
+        var item = Instantiate(GetRandomBottle(), GetRandomPosition(), Quaternion.identity);
+        item.GetComponent<ItemScript>().effectManager = effectManager;
     }
 
     private void Spawn()
     {
-        Instantiate(GetRandomFromLevel(), GetRandomPosition(), Quaternion.identity);
-
-        num += 1;
+        var item = Instantiate(GetRandomFromLevel(), GetRandomPosition(), Quaternion.identity);
+        item.GetComponent<ItemScript>().effectManager = effectManager;
     }
 
     private void CheckQuota()
     {
-        if (currentLevel.GetComponent<LevelScript>().bottleList.Count == 0)
+        if (currentLevel.GetComponent<LevelScript>().bottleList.Count == 0 && !done)
         {
             timer += Time.deltaTime;
+            musicManager.GetComponent<AudioSource>().volume -= 0.00015f;
         }
-        if (timer > 10f)
+        if (MoneyManager.amount >= currentLevel.GetComponent<LevelScript>().quota && !done && !playedQuota)
         {
-            var binList = GameObject.FindGameObjectsWithTag("Basket");
-            for (int i = 0; i < binList.Length; i++)
-            {
-                binList[i].GetComponent<BinScript>().Empty();
-            }
-
+            effectManager.GetComponent<AudioSource>().PlayOneShot(quotaReached);
+            playedQuota = true;
+        }
+        if (timer > 10f && !done)
+        {
             if (MoneyManager.amount < currentLevel.GetComponent<LevelScript>().quota)
             {
                 // Lose
-                print("Lose");
-                endgame.GetComponent<EndgameScript>().Lose();
+                endgame.GetComponent<EndgameScript>().FadeIn(0);
+                musicManager.GetComponent<AudioSource>().Stop();
+                effectManager.GetComponent<AudioSource>().Stop();
+                done = true;
             }
             else if (MoneyManager.amount >= currentLevel.GetComponent<LevelScript>().quota)
             {
                 //Win
-                print("Win");
-                endgame.GetComponent<EndgameScript>().Win();
+                endgame.GetComponent<EndgameScript>().FadeIn(1);
+                musicManager.GetComponent<AudioSource>().Stop();
+                effectManager.GetComponent<AudioSource>().Stop();
+                done = true;
             }
+        }
+    }
+
+    private void CheckEndless()
+    {
+        if (numDrop >= maxDrop && !done)
+        {
+            spawning = false;
+            var items = GameObject.FindGameObjectsWithTag("Item");
+            for (int i = 0; i < items.Length; i++)
+            {
+                Destroy(items[i].gameObject);
+            }
+
+            endgame.GetComponent<EndgameScript>().FadeIn(2);
+            musicManager.GetComponent<AudioSource>().Stop();
+            effectManager.GetComponent<AudioSource>().Stop();
+            done = true;
         }
     }
 
@@ -156,6 +195,14 @@ public class SpawnManager : MonoBehaviour
         currentLevel = Instantiate(levels[num]);
         currentLevel.GetComponent<LevelScript>().sManager = this.gameObject;
         variedSpawn = currentLevel.GetComponent<LevelScript>().spawnRate;
+
+        musicManager.GetComponent<AudioSource>().Play();
+        effectManager.GetComponent<AudioSource>().Play();
+        playing = true;
+        numCollect = 0;
+        done = false;
+        spawning = true;
+        playedQuota = false;
     }
 
     public void PlayEndless()
@@ -171,6 +218,15 @@ public class SpawnManager : MonoBehaviour
         currentLevel = null;
         spawnCD = 1.5f;
         variedSpawn = spawnCD;
+        numDrop = 0;
+        numCollect = 0;
+
+        musicManager.GetComponent<AudioSource>().Play();
+        effectManager.GetComponent<AudioSource>().Play();
+        playing = true;
+        done = false;
+        spawning = true;
+        playedQuota = false;
     }
 
     public void Restart()
@@ -180,9 +236,18 @@ public class SpawnManager : MonoBehaviour
         {
             PlayLevel(currentLevelNum);
         }
-        else if (currentLevelNum == -1)
+        else
         {
             PlayEndless();
+        }
+    }
+
+    public void NextLevel()
+    {
+        // Next Level
+        if (currentLevelNum != 2)
+        {
+            PlayLevel(currentLevelNum + 1);
         }
     }
 }

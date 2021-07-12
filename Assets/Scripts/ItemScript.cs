@@ -28,6 +28,11 @@ public class ItemScript : MonoBehaviour
     private Vector3 spawnPos;
     private bool spawning;
 
+    public GameObject effectManager;
+    public AudioClip pickUp;
+    public AudioClip putDown;
+    public AudioClip trash;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,6 +93,7 @@ public class ItemScript : MonoBehaviour
     {
         if (!dying && !spawning && !PauseScript.isPaused)
         {
+            effectManager.GetComponent<AudioSource>().PlayOneShot(pickUp);
             onBelt = false;
             pickUpPos = transform.position;
             isHeld = true;
@@ -118,6 +124,7 @@ public class ItemScript : MonoBehaviour
 
             if (MouseScript.overBasket != null && MouseScript.overBasket.GetComponent<BinScript>().open)
             {
+                effectManager.GetComponent<AudioSource>().PlayOneShot(putDown);
                 MouseScript.overBasket.GetComponent<BinScript>().Add(this.gameObject);
                 GetComponent<SpriteRenderer>().sortingOrder = MouseScript.overBasket.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder - 10 + sortPos;
                 inBasket = true;
@@ -163,6 +170,7 @@ public class ItemScript : MonoBehaviour
         onBelt = false;
         dying = true;
         Invoke("Die", 3f);
+        effectManager.GetComponent<AudioSource>().PlayOneShot(trash, 0.25f);
     }
 
     public void Die()

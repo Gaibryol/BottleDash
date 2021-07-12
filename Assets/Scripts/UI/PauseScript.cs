@@ -76,9 +76,4 @@ public class PauseScript : MonoBehaviour
             guideMenu.SetActive(true);
         }
     }
-
-    public void ToMainMenu()
-    {
-        // Go To Main Menu
-    }
 }
