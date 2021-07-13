@@ -11,7 +11,6 @@ public class ItemScript : MonoBehaviour
     public bool onBelt;
     public bool inBasket;
     public GameObject basket;
-    private GameObject lastBasket;
 
     private Vector3 pickUpPos;
 
@@ -74,6 +73,11 @@ public class ItemScript : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(GetComponent<SpriteRenderer>().color.r, GetComponent<SpriteRenderer>().color.g, GetComponent<SpriteRenderer>().color.b, GetComponent<SpriteRenderer>().color.a - Time.deltaTime);
             transform.Translate(new Vector2(-moveSpeed * Time.deltaTime, -moveSpeed / 2f * Time.deltaTime));
         }
+
+        if (inBasket)
+        {
+            GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 
     private void OnMouseDrag()
@@ -103,14 +107,6 @@ public class ItemScript : MonoBehaviour
             MouseScript.heldItem = this.gameObject;
             GetComponent<SpriteRenderer>().sortingOrder = 50;
             GetComponent<SpriteRenderer>().sprite = selected;
-
-            if (inBasket)
-            {
-                MouseScript.overBasket.GetComponent<BinScript>().bottleList.Remove(this.gameObject);
-                inBasket = false;
-                lastBasket = basket;
-                basket = null;
-            }
         }
     }
 
@@ -135,19 +131,7 @@ public class ItemScript : MonoBehaviour
                 transform.position = pickUpPos;
                 GetComponent<SpriteRenderer>().sortingOrder = sortPos;
             }
-            else if (MouseScript.overBasket == null && lastBasket != null && MouseScript.overBelt == null)
-            {
-                transform.position = pickUpPos;
-                basket = lastBasket;
-                inBasket = true;
-                basket.GetComponent<BinScript>().Add(this.gameObject);
-                GetComponent<SpriteRenderer>().sortingOrder = basket.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder - 10 + sortPos;
-            }
-            else if (MouseScript.overBasket == null && lastBasket != null && MouseScript.overBelt != null)
-            {
-                GetComponent<SpriteRenderer>().sortingOrder = sortPos;
-            }
-            else if (MouseScript.overBasket == null && lastBasket == null && MouseScript.overBelt == null)
+            else if (MouseScript.overBasket == null && MouseScript.overBelt == null)
             {
                 transform.position = pickUpPos;
                 GetComponent<SpriteRenderer>().sortingOrder = sortPos;

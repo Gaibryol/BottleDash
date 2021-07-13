@@ -73,7 +73,7 @@ public class EndgameScript : MonoBehaviour
     {
         if (state == 0)
         {
-            Invoke("Win", 2f);
+            Invoke("Win", 0.5f);
             endgame = panel;
 
             level.GetComponent<TextMeshProUGUI>().text = "Level " + (sScript.currentLevelNum + 1).ToString();
@@ -82,7 +82,7 @@ public class EndgameScript : MonoBehaviour
         }
         else if (state == 1)
         {
-            Invoke("Lose", 2f);
+            Invoke("Lose", 0.5f);
             endgame = panel;
 
             level.GetComponent<TextMeshProUGUI>().text = "Level " + (sScript.currentLevelNum + 1).ToString();
@@ -96,7 +96,7 @@ public class EndgameScript : MonoBehaviour
             eCoins.GetComponent<TextMeshProUGUI>().text = MoneyManager.amount.ToString();
             eNumCollect.GetComponent<TextMeshProUGUI>().text = sScript.numCollect.ToString();
 
-            Invoke("Endless", 2f);
+            Invoke("Endless", 0.5f);
             endgame = endlessPanel;
         }
         fading = true;
