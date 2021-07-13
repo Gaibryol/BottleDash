@@ -36,7 +36,14 @@ public class BinScript : MonoBehaviour
 
     void SpriteLogic()
     {
-        // Line up bottles in basket
+        if (bottleList.Count != 0)
+        {
+            // Line up bottles in basket
+            for (int i = 0; i < bottleList.Count; i++)
+            {
+                bottleList[i].GetComponent<SpriteRenderer>().sortingOrder = transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder - 5 + i;
+            }
+        }
     }
 
     void FullnessLogic()
@@ -88,7 +95,23 @@ public class BinScript : MonoBehaviour
 
     public void Add(GameObject item)
     {
+        //bottleList.Add(item);
+        if (bottleList.Count == 0)
+        {
+            bottleList.Add(item);
+            return;
+        }
+
+        for (int i = 0; i < bottleList.Count; i++)
+        {
+            if (item.transform.position.y - item.GetComponent<SpriteRenderer>().bounds.size.y / 2 > bottleList[i].transform.position.y - bottleList[i].GetComponent<SpriteRenderer>().bounds.size.y / 2)
+            {
+                bottleList.Insert(i, item);
+                return;
+            }
+        }
         bottleList.Add(item);
+        return;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

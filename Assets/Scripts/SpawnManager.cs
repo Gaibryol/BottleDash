@@ -34,6 +34,8 @@ public class SpawnManager : MonoBehaviour
     public bool playing;
     private bool playedQuota;
 
+    public List<GameObject> spawned;
+
     // Start is called before the first frame update
     void Start()
     {
