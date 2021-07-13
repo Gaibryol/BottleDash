@@ -63,7 +63,7 @@ public class SpawnManager : MonoBehaviour
 
             if (currentLevel == null)
             {
-                spawnCD = spawnCD - (gameTimer / 200000f);
+                spawnCD = spawnCD - (gameTimer / 400000f);
                 if (spawnCD <= 0.4f)
                 {
                     spawnCD = 0.4f;
@@ -77,7 +77,7 @@ public class SpawnManager : MonoBehaviour
                 {
                     SpawnRandom();
                     timer = 0;
-                    variedSpawn = spawnCD + Random.Range(-0.25f, 0.25f);
+                    variedSpawn = spawnCD + Random.Range(-0.2f, 0.2f);
                 }
 
                 CheckEndless();
@@ -202,6 +202,7 @@ public class SpawnManager : MonoBehaviour
         variedSpawn = currentLevel.GetComponent<LevelScript>().spawnRate;
 
         musicManager.GetComponent<AudioSource>().Play();
+        musicManager.GetComponent<AudioSource>().volume = 0.1f;
         effectManager.GetComponent<AudioSource>().Play();
         playing = true;
         numCollect = 0;
@@ -232,6 +233,7 @@ public class SpawnManager : MonoBehaviour
         numCollect = 0;
 
         musicManager.GetComponent<AudioSource>().Play();
+        musicManager.GetComponent<AudioSource>().volume = 0.1f;
         effectManager.GetComponent<AudioSource>().Play();
         playing = true;
         done = false;
