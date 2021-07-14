@@ -11,7 +11,9 @@ public class TitleScript : MonoBehaviour
 
     public GameObject credits;
     public GameObject help;
-    public GameObject levels;
+
+    public List<GameObject> levelList;
+    public int currentLevelPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -31,13 +33,27 @@ public class TitleScript : MonoBehaviour
         }
     }
 
+    public void NextLevelPanel()
+    {
+        levelList[currentLevelPanel].SetActive(false);
+        currentLevelPanel += 1;
+        levelList[currentLevelPanel].SetActive(true);
+    }
+
+    public void PreviousLevelPanel()
+    {
+        levelList[currentLevelPanel].SetActive(false);
+        currentLevelPanel -= 1;
+        levelList[currentLevelPanel].SetActive(true);
+    }
+
     public void Play()
     {
         everything.SetActive(true);
         panel.SetActive(false);
         credits.SetActive(false);
         help.SetActive(false);
-        levels.SetActive(false);
+        levelList[currentLevelPanel].SetActive(false);
     }
 
     public void OpenMenu()
@@ -58,7 +74,7 @@ public class TitleScript : MonoBehaviour
         {
             credits.SetActive(true);
             help.SetActive(false);
-            levels.SetActive(false);
+            levelList[currentLevelPanel].SetActive(false);
         }
     }
 
@@ -72,19 +88,19 @@ public class TitleScript : MonoBehaviour
         {
             help.SetActive(true);
             credits.SetActive(false);
-            levels.SetActive(false);
+            levelList[currentLevelPanel].SetActive(false);
         }
     }
 
     public void ToggleLevels()
     {
-        if (levels.activeSelf)
+        if (levelList[currentLevelPanel].activeSelf)
         {
-            levels.SetActive(false);
+            levelList[currentLevelPanel].SetActive(false);
         }
         else
         {
-            levels.SetActive(true);
+            levelList[currentLevelPanel].SetActive(true);
             help.SetActive(false);
             credits.SetActive(false);
         }
