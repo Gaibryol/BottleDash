@@ -36,6 +36,14 @@ public class TitleScript : MonoBehaviour
     public void NextLevelPanel()
     {
         levelList[currentLevelPanel].SetActive(false);
+
+        if (currentLevelPanel == levelList.Count - 1)
+        {
+            currentLevelPanel = 0;
+            levelList[currentLevelPanel].SetActive(true);
+            return;
+        }
+
         currentLevelPanel += 1;
         levelList[currentLevelPanel].SetActive(true);
     }
@@ -43,6 +51,14 @@ public class TitleScript : MonoBehaviour
     public void PreviousLevelPanel()
     {
         levelList[currentLevelPanel].SetActive(false);
+
+        if (currentLevelPanel == 0)
+        {
+            currentLevelPanel = levelList.Count - 1;
+            levelList[currentLevelPanel].SetActive(true);
+            return;
+        }
+        
         currentLevelPanel -= 1;
         levelList[currentLevelPanel].SetActive(true);
     }
