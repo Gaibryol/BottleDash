@@ -28,10 +28,14 @@ public class EndgameScript : MonoBehaviour
     public GameObject spawner;
     private SpawnManager sScript;
 
+    public GameObject saveManager;
+    private SaveScript saveScript;
+
     // Start is called before the first frame update
     void Start()
     {
         sScript = spawner.GetComponent<SpawnManager>();
+        saveScript = saveManager.GetComponent<SaveScript>();
     }
 
     // Update is called once per frame
@@ -75,6 +79,7 @@ public class EndgameScript : MonoBehaviour
         {
             Invoke("Win", 0.5f);
             endgame = panel;
+            saveScript.ChangePassedLevel(sScript.currentLevelNum);
 
             level.GetComponent<TextMeshProUGUI>().text = "Level " + (sScript.currentLevelNum + 1).ToString();
             coins.GetComponent<TextMeshProUGUI>().text = MoneyManager.amount.ToString();
@@ -95,6 +100,11 @@ public class EndgameScript : MonoBehaviour
             eLevel.GetComponent<TextMeshProUGUI>().text = "Free Play";
             eCoins.GetComponent<TextMeshProUGUI>().text = MoneyManager.amount.ToString();
             eNumCollect.GetComponent<TextMeshProUGUI>().text = sScript.numCollect.ToString();
+
+            if (MoneyManager.amount > saveScript.GetHighscore())
+            {
+                saveScript.ChangeHighscore(MoneyManager.amount);
+            }
 
             Invoke("Endless", 0.5f);
             endgame = endlessPanel;
