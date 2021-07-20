@@ -31,11 +31,22 @@ public class EndgameScript : MonoBehaviour
     public GameObject saveManager;
     private SaveScript saveScript;
 
+    public Sprite winPanel;
+    public Sprite losePanel;
+
+    public GameObject restartButton;
+    public GameObject nextButton;
+    private Vector3 origPos;
+    private Vector3 newPos;
+
     // Start is called before the first frame update
     void Start()
     {
         sScript = spawner.GetComponent<SpawnManager>();
         saveScript = saveManager.GetComponent<SaveScript>();
+
+        origPos = restartButton.transform.position;
+        newPos = new Vector3(origPos.x + 187.8f, origPos.y, 0);
     }
 
     // Update is called once per frame
@@ -77,8 +88,20 @@ public class EndgameScript : MonoBehaviour
     {
         if (state == 0)
         {
+            if (sScript.currentLevelNum + 1 == sScript.levels.Count)
+            {
+                restartButton.transform.position = newPos;
+                nextButton.SetActive(false);
+            }
+            else
+            {
+                nextButton.SetActive(true);
+                restartButton.transform.position = origPos;
+            }
+
             Invoke("Win", 0.5f);
             endgame = panel;
+            endgame.GetComponent<Image>().sprite = winPanel;
             saveScript.ChangePassedLevel(sScript.currentLevelNum);
 
             level.GetComponent<TextMeshProUGUI>().text = "Level " + (sScript.currentLevelNum + 1).ToString();
@@ -87,9 +110,20 @@ public class EndgameScript : MonoBehaviour
         }
         else if (state == 1)
         {
+            if (sScript.currentLevelNum + 1 == sScript.levels.Count)
+            {
+                restartButton.transform.position = newPos;
+                nextButton.SetActive(false);
+            }
+            else
+            {
+                restartButton.transform.position = origPos;
+                nextButton.SetActive(true);
+            }
+
             Invoke("Lose", 0.5f);
             endgame = panel;
-
+            endgame.GetComponent<Image>().sprite = losePanel;
             level.GetComponent<TextMeshProUGUI>().text = "Level " + (sScript.currentLevelNum + 1).ToString();
             coins.GetComponent<TextMeshProUGUI>().text = MoneyManager.amount.ToString();
             numCollect.GetComponent<TextMeshProUGUI>().text = sScript.numCollect.ToString();

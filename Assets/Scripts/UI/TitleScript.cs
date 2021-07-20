@@ -11,6 +11,7 @@ public class TitleScript : MonoBehaviour
 
     public GameObject credits;
     public GameObject help;
+    public GameObject highscore;
 
     public List<GameObject> levelList;
     public int currentLevelPanel;
@@ -91,6 +92,22 @@ public class TitleScript : MonoBehaviour
             credits.SetActive(true);
             help.SetActive(false);
             levelList[currentLevelPanel].SetActive(false);
+            highscore.SetActive(false);
+        }
+    }
+
+    public void ToggleHighscore()
+    {
+        if (highscore.activeSelf)
+        {
+            highscore.SetActive(false);
+        }
+        else
+        {
+            highscore.SetActive(true);
+            credits.SetActive(false);
+            help.SetActive(false);
+            levelList[currentLevelPanel].SetActive(false);
         }
     }
 
@@ -105,6 +122,7 @@ public class TitleScript : MonoBehaviour
             help.SetActive(true);
             credits.SetActive(false);
             levelList[currentLevelPanel].SetActive(false);
+            highscore.SetActive(false);
         }
     }
 
@@ -119,6 +137,7 @@ public class TitleScript : MonoBehaviour
             levelList[currentLevelPanel].SetActive(true);
             help.SetActive(false);
             credits.SetActive(false);
+            highscore.SetActive(false);
         }
     }
 }
