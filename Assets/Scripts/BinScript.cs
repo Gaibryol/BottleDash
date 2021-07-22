@@ -74,11 +74,10 @@ public class BinScript : MonoBehaviour
             }
             Destroy(bottleList[i]);
         }
-
-        bottleList.Clear();
-
         MoneyManager.Add(amount);
+        numItems = 0;
         amount = 0;
+        bottleList = new List<GameObject>();
     }
 
     public void Clear()
@@ -88,7 +87,7 @@ public class BinScript : MonoBehaviour
             Destroy(bottleList[i]);
         }
 
-        bottleList.Clear();
+        bottleList = new List<GameObject>();
         numItems = 0;
         amount = 0;
     }

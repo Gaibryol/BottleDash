@@ -138,6 +138,11 @@ public class EndgameScript : MonoBehaviour
             if (MoneyManager.amount > saveScript.GetHighscore())
             {
                 saveScript.ChangeHighscore(MoneyManager.amount);
+                saveScript.ChangeHighbottle(sScript.numCollect);
+
+                string date = System.DateTime.Now.ToString();
+                date = date.Remove(date.Length - 6);
+                saveScript.ChangeDate(date);
             }
 
             Invoke("Endless", 0.5f);

@@ -7,6 +7,8 @@ public class SaveScript : MonoBehaviour
 
     public int passedLevel;
     public int highscore;
+    public int highbottle;
+    public string date;
 
     private void Start()
     {
@@ -23,7 +25,19 @@ public class SaveScript : MonoBehaviour
     public void ChangeHighscore(int num)
     {
         highscore = num;
-        PlayerPrefs.SetInt("highscore", passedLevel);
+        PlayerPrefs.SetInt("highscore", highscore);
+    }
+
+    public void ChangeHighbottle(int num)
+    {
+        highbottle = num;
+        PlayerPrefs.SetInt("highbottle", highbottle);
+    }
+
+    public void ChangeDate(string d)
+    {
+        date = d;
+        PlayerPrefs.SetString("date", date);
     }
 
     public int GetPassedLevel()
@@ -42,6 +56,27 @@ public class SaveScript : MonoBehaviour
         {
             return PlayerPrefs.GetInt("highscore");
         }
+
         return 0;
+    }
+
+    public int GetHighbottle()
+    {
+        if (PlayerPrefs.HasKey("highbottle"))
+        {
+            return PlayerPrefs.GetInt("highbottle");
+        }
+
+        return 0;
+    }
+
+    public string GetDate()
+    {
+        if (PlayerPrefs.HasKey("date"))
+        {
+            return PlayerPrefs.GetString("date");
+        }
+
+        return "";
     }
 }

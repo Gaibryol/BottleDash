@@ -11,10 +11,14 @@ public class MouseScript : MonoBehaviour
     private float doubleTouchTimer;
     private bool firstTouch;
 
+    private bool fingerDown;
+    private Vector3 startPos;
+
     // Start is called before the first frame update
     void Start()
     {
         firstTouch = true;
+        fingerDown = false;
     }
 
     // Update is called once per frame
@@ -40,19 +44,68 @@ public class MouseScript : MonoBehaviour
 
         if (overBasket != null)
         {
-            if (Input.GetMouseButtonDown(0))
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    if (firstTouch)
+            //    {
+            //        firstTouch = false;
+            //        doubleTouchTimer = 0.3f;
+            //        return;
+            //    }
+            //    if (!firstTouch && doubleTouchTimer > 0)
+            //    {
+            //        overBasket.GetComponent<BinScript>().Empty();
+            //        firstTouch = true;
+            //        return;
+            //    }
+            //}
+
+            if ((Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer))
             {
-                if (firstTouch)
+                if (fingerDown == false && Input.GetMouseButtonDown(0))
                 {
-                    firstTouch = false;
-                    doubleTouchTimer = 0.3f;
-                    return;
+                    startPos = Input.mousePosition;
+                    fingerDown = true;
                 }
-                if (!firstTouch && doubleTouchTimer > 0)
+
+                if (fingerDown)
                 {
-                    overBasket.GetComponent<BinScript>().Empty();
-                    firstTouch = true;
-                    return;
+                    if (Input.mousePosition.x >= startPos.x + 30)
+                    {
+                        // Swipe Right
+                        fingerDown = false;
+                        overBasket.GetComponent<BinScript>().Empty();
+                        return;
+                    }
+                }
+
+                if (fingerDown && Input.GetMouseButtonUp(0))
+                {
+                    fingerDown = false;
+                }
+            }
+
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                if (fingerDown == false && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+                {
+                    fingerDown = true;
+                    startPos = Input.touches[0].position;
+                }
+
+                if (fingerDown)
+                {
+                    if (Input.touches[0].position.x >= startPos.x + 30)
+                    {
+                        fingerDown = false;
+                        overBasket.GetComponent<BinScript>().Empty();
+                        return;
+                    }
+                }
+
+                if (fingerDown && Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Ended)
+                {
+                    fingerDown = false;
                 }
             }
         }

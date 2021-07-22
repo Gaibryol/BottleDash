@@ -176,6 +176,11 @@ public class SpawnManager : MonoBehaviour
             {
                 Destroy(items[i].gameObject);
             }
+            var binArray = GameObject.FindGameObjectsWithTag("Basket");
+            for (int i = 0; i < binArray.Length; i++)
+            {
+                binArray[i].GetComponent<BinScript>().Clear();
+            }
 
             endgame.GetComponent<EndgameScript>().FadeIn(2);
             musicManager.GetComponent<AudioSource>().Stop();
