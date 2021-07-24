@@ -39,6 +39,8 @@ public class EndgameScript : MonoBehaviour
     private Vector3 origPos;
     private Vector3 newPos;
 
+    public GameObject hsPopUp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -143,6 +145,10 @@ public class EndgameScript : MonoBehaviour
                 string date = System.DateTime.Now.ToString();
                 date = date.Remove(date.Length - 6);
                 saveScript.ChangeDate(date);
+
+                hsPopUp.SetActive(true);
+                hsPopUp.GetComponent<HSPopupScript>().EnterAnim();
+                hsPopUp.GetComponent<HSPopupScript>().ChangeText(MoneyManager.amount, sScript.numCollect);
             }
 
             Invoke("Endless", 0.5f);
