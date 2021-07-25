@@ -142,8 +142,7 @@ public class EndgameScript : MonoBehaviour
                 saveScript.ChangeHighscore(MoneyManager.amount);
                 saveScript.ChangeHighbottle(sScript.numCollect);
 
-                string date = System.DateTime.Now.ToString();
-                date = date.Remove(date.Length - 6);
+                string date = System.DateTime.Now.ToString("MM-dd HH:mm");
                 saveScript.ChangeDate(date);
 
                 hsPopUp.SetActive(true);
