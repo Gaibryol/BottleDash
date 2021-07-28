@@ -58,7 +58,7 @@ public class EndgameScript : MonoBehaviour
         {
             endgame.GetComponent<Image>().color = new Color(endgame.GetComponent<Image>().color.r, endgame.GetComponent<Image>().color.g, endgame.GetComponent<Image>().color.b, endgame.GetComponent<Image>().color.a + Time.deltaTime);
 
-            if (endgame.GetComponent<Image>().color.a >= 1)
+            if (endgame.GetComponent<Image>().color.a >= 0.8863f)
             {
                 fading = false;
             }

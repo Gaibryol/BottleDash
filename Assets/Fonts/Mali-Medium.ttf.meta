@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a6b8adc2cac36664ca4432de98f28ce0
+guid: 32ac9954bfa50264c8329ae12a79fdfd
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,10 +9,9 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Hind Siliguri
+  - Mali
   fallbackFontReferences:
-  - {fileID: 12800000, guid: 11879fe9c47da6e4798e303e14eda47a, type: 3}
-  - {fileID: 12800000, guid: d0fdfdf333cc50049939580fd73ee74e, type: 3}
+  - {fileID: 12800000, guid: 329945a2454c7804c9d50fc27aa8561b, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
