@@ -10,11 +10,13 @@ public class TitleScript : MonoBehaviour
     private GameObject panel;
 
     public GameObject credits;
-    public GameObject help;
     public GameObject highscore;
 
     public List<GameObject> levelList;
     public int currentLevelPanel;
+
+    public List<GameObject> helpList;
+    public int currentHelpPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -64,12 +66,42 @@ public class TitleScript : MonoBehaviour
         levelList[currentLevelPanel].SetActive(true);
     }
 
+    public void NextHelpPanel()
+    {
+        helpList[currentHelpPanel].SetActive(false);
+
+        if (currentHelpPanel == helpList.Count - 1)
+        {
+            currentHelpPanel = 0;
+            helpList[currentHelpPanel].SetActive(true);
+            return;
+        }
+
+        currentHelpPanel += 1;
+        helpList[currentHelpPanel].SetActive(true);
+    }
+
+    public void PreviousHelpPanel()
+    {
+        helpList[currentHelpPanel].SetActive(false);
+
+        if (currentHelpPanel == 0)
+        {
+            currentHelpPanel = helpList.Count - 1;
+            helpList[currentHelpPanel].SetActive(true);
+            return;
+        }
+
+        currentHelpPanel -= 1;
+        helpList[currentHelpPanel].SetActive(true);
+    }
+
     public void Play()
     {
         everything.SetActive(true);
         panel.SetActive(false);
         credits.SetActive(false);
-        help.SetActive(false);
+        helpList[currentHelpPanel].SetActive(false);
         levelList[currentLevelPanel].SetActive(false);
     }
 
@@ -90,7 +122,7 @@ public class TitleScript : MonoBehaviour
         else
         {
             credits.SetActive(true);
-            help.SetActive(false);
+            helpList[currentHelpPanel].SetActive(false);
             levelList[currentLevelPanel].SetActive(false);
             highscore.SetActive(false);
         }
@@ -106,20 +138,20 @@ public class TitleScript : MonoBehaviour
         {
             highscore.SetActive(true);
             credits.SetActive(false);
-            help.SetActive(false);
+            helpList[currentHelpPanel].SetActive(false);
             levelList[currentLevelPanel].SetActive(false);
         }
     }
 
     public void ToggleHelp()
     {
-        if (help.activeSelf)
+        if (helpList[currentHelpPanel].activeSelf)
         {
-            help.SetActive(false);
+            helpList[currentHelpPanel].SetActive(false);
         }
         else
         {
-            help.SetActive(true);
+            helpList[currentHelpPanel].SetActive(true);
             credits.SetActive(false);
             levelList[currentLevelPanel].SetActive(false);
             highscore.SetActive(false);
@@ -135,7 +167,7 @@ public class TitleScript : MonoBehaviour
         else
         {
             levelList[currentLevelPanel].SetActive(true);
-            help.SetActive(false);
+            helpList[currentHelpPanel].SetActive(false);
             credits.SetActive(false);
             highscore.SetActive(false);
         }

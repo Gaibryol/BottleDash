@@ -802,13 +802,16 @@ MonoBehaviour:
   everything: {fileID: 620918394}
   spawner: {fileID: 438957094}
   credits: {fileID: 481696521}
-  help: {fileID: 2140981796}
   highscore: {fileID: 1922229546}
   levelList:
   - {fileID: 1436874923}
   - {fileID: 934964405}
   - {fileID: 36908372}
   currentLevelPanel: 0
+  helpList:
+  - {fileID: 2140981796}
+  - {fileID: 0}
+  currentHelpPanel: 0
 --- !u!1 &71656740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1515,7 @@ PrefabInstance:
       objectReference: {fileID: 438957094}
     - target: {fileID: 1530852256030282107, guid: 67b0894b96bb9b64dae1f6f0b3fbf8d7, type: 3}
       propertyPath: maxItems
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1530852256030282107, guid: 67b0894b96bb9b64dae1f6f0b3fbf8d7, type: 3}
       propertyPath: effectManager
@@ -9261,7 +9264,7 @@ PrefabInstance:
       objectReference: {fileID: 438957094}
     - target: {fileID: 1530852256030282107, guid: 67b0894b96bb9b64dae1f6f0b3fbf8d7, type: 3}
       propertyPath: maxItems
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1530852256030282107, guid: 67b0894b96bb9b64dae1f6f0b3fbf8d7, type: 3}
       propertyPath: effectManager
@@ -11274,7 +11277,7 @@ GameObject:
   - component: {fileID: 2140981799}
   - component: {fileID: 2140981798}
   m_Layer: 5
-  m_Name: Help Panel
+  m_Name: Help Panel 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11359,7 +11362,7 @@ PrefabInstance:
       objectReference: {fileID: 438957094}
     - target: {fileID: 1530852256030282107, guid: 67b0894b96bb9b64dae1f6f0b3fbf8d7, type: 3}
       propertyPath: maxItems
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1530852256030282107, guid: 67b0894b96bb9b64dae1f6f0b3fbf8d7, type: 3}
       propertyPath: effectManager
