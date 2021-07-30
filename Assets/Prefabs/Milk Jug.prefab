@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8063177260674799828}
   - component: {fileID: 8063177260674799829}
   - component: {fileID: 8063177260674799831}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Milk Jug
   m_TagString: Item
   m_Icon: {fileID: 0}

@@ -112,20 +112,4 @@ public class BinScript : MonoBehaviour
         bottleList.Add(item);
         return;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Mouse")
-        {
-            MouseScript.overBasket = this.gameObject;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Mouse")
-        {
-            MouseScript.overBasket = null;
-        }
-    }
 }

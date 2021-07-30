@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6032054966647857553}
   - component: {fileID: 6032054966647857552}
   - component: {fileID: 6032054966647857554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Water Bottle
   m_TagString: Item
   m_Icon: {fileID: 0}
