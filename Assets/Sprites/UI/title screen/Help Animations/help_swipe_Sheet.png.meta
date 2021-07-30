@@ -1,0 +1,564 @@
+fileFormatVersion: 2
+guid: 96717d58ef457ff4ba67351a4211c9e1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9070333374474437614
+    second: help_swipe_Sheet_0
+  - first:
+      213: 1721672316140986015
+    second: help_swipe_Sheet_1
+  - first:
+      213: 8420886303539925410
+    second: help_swipe_Sheet_2
+  - first:
+      213: -2302855914068748075
+    second: help_swipe_Sheet_3
+  - first:
+      213: -599890976892154722
+    second: help_swipe_Sheet_4
+  - first:
+      213: 5376520622095631148
+    second: help_swipe_Sheet_5
+  - first:
+      213: -3732428102840699380
+    second: help_swipe_Sheet_6
+  - first:
+      213: 143996133198284587
+    second: help_swipe_Sheet_7
+  - first:
+      213: -5998520909821791881
+    second: help_swipe_Sheet_8
+  - first:
+      213: 1217904592162036707
+    second: help_swipe_Sheet_9
+  - first:
+      213: 3769551923639275968
+    second: help_swipe_Sheet_10
+  - first:
+      213: -6947682671957638821
+    second: help_swipe_Sheet_11
+  - first:
+      213: -7779815527125993312
+    second: help_swipe_Sheet_12
+  - first:
+      213: -6133770133879477312
+    second: help_swipe_Sheet_13
+  - first:
+      213: 756690105357147338
+    second: help_swipe_Sheet_14
+  - first:
+      213: -5639987145896613078
+    second: help_swipe_Sheet_15
+  - first:
+      213: 3689734506473916131
+    second: help_swipe_Sheet_16
+  - first:
+      213: 3277206389138872888
+    second: help_swipe_Sheet_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: help_swipe_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1470
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee34bebb52c40ed70800000000000000
+      internalID: 9070333374474437614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 1470
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e153789db94e710800000000000000
+      internalID: 1721672316140986015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 2624
+        y: 1470
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a113703a7ffcd470800000000000000
+      internalID: 8420886303539925410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 3936
+        y: 1470
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d856094fbc9a00e0800000000000000
+      internalID: -2302855914068748075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 5248
+        y: 1470
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9c816ab552cca7f0800000000000000
+      internalID: -599890976892154722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 6560
+        y: 1470
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c23829f050d3d9a40800000000000000
+      internalID: 5376520622095631148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 735
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c06be7c6a60c33cc0800000000000000
+      internalID: -3732428102840699380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 735
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b27405068b39ff100800000000000000
+      internalID: 143996133198284587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 2624
+        y: 735
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 771b1589309f0cca0800000000000000
+      internalID: -5998520909821791881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 3936
+        y: 735
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eb922a16cdd6e010800000000000000
+      internalID: 1217904592162036707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 5248
+        y: 735
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c1d8eaa083205430800000000000000
+      internalID: 3769551923639275968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 6560
+        y: 735
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5104d59b6fd49f90800000000000000
+      internalID: -6947682671957638821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a8369f4ffa880490800000000000000
+      internalID: -7779815527125993312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 0
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cba634bf8870eaa0800000000000000
+      internalID: -6133770133879477312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 2624
+        y: 0
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acc9dd644ad408a00800000000000000
+      internalID: 756690105357147338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 3936
+        y: 0
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2b201f929dbab1b0800000000000000
+      internalID: -5639987145896613078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 5248
+        y: 0
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e601ed0cf1943330800000000000000
+      internalID: 3689734506473916131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: help_swipe_Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 6560
+        y: 0
+        width: 1312
+        height: 735
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83a5348f8d9fa7d20800000000000000
+      internalID: 3277206389138872888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

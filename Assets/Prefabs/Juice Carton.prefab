@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2398647361226504350}
   - component: {fileID: 2398647361226504351}
   - component: {fileID: 2398647361226504349}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Juice Carton
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2, y: 2.27}
+    oldSize: {x: 1.42, y: 2.51}
     newSize: {x: 1.2, y: 2.27}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

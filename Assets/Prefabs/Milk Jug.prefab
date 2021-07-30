@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8063177260674799828}
   - component: {fileID: 8063177260674799829}
   - component: {fileID: 8063177260674799831}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Milk Jug
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   moveSpeed: 1.85
   sortPos: 1
   notSelected: {fileID: 0}
-  selected: {fileID: 21300000, guid: 61d8de004060cd8438dcd312c3319182, type: 3}
+  selected: {fileID: 21300000, guid: 1a1384ecfc5d9ec409088cd99c6d957d, type: 3}
   dying: 0
   effectManager: {fileID: 0}
   pickUp: {fileID: 8300000, guid: 4b4f4f0c936328244abe4b5552ad9cae, type: 3}
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.72, y: 2.56}
+    oldSize: {x: 1.8, y: 2.66}
     newSize: {x: 1.72, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

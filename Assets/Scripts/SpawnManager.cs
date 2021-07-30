@@ -34,6 +34,8 @@ public class SpawnManager : MonoBehaviour
     public bool playing;
     private bool playedQuota;
 
+    public List<GameObject> spawned;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -148,7 +150,7 @@ public class SpawnManager : MonoBehaviour
             if (MoneyManager.amount < currentLevel.GetComponent<LevelScript>().quota)
             {
                 // Lose
-                endgame.GetComponent<EndgameScript>().FadeIn(0);
+                endgame.GetComponent<EndgameScript>().FadeIn(1);
                 musicManager.GetComponent<AudioSource>().Stop();
                 effectManager.GetComponent<AudioSource>().Stop();
                 done = true;
@@ -156,7 +158,7 @@ public class SpawnManager : MonoBehaviour
             else if (MoneyManager.amount >= currentLevel.GetComponent<LevelScript>().quota)
             {
                 //Win
-                endgame.GetComponent<EndgameScript>().FadeIn(1);
+                endgame.GetComponent<EndgameScript>().FadeIn(0);
                 musicManager.GetComponent<AudioSource>().Stop();
                 effectManager.GetComponent<AudioSource>().Stop();
                 done = true;
@@ -173,6 +175,11 @@ public class SpawnManager : MonoBehaviour
             for (int i = 0; i < items.Length; i++)
             {
                 Destroy(items[i].gameObject);
+            }
+            var binArray = GameObject.FindGameObjectsWithTag("Basket");
+            for (int i = 0; i < binArray.Length; i++)
+            {
+                binArray[i].GetComponent<BinScript>().Clear();
             }
 
             endgame.GetComponent<EndgameScript>().FadeIn(2);

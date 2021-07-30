@@ -18,19 +18,14 @@ public class ConveyorBeltScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Mouse")
+        if (collision.tag == "Item")
         {
-            MouseScript.overBelt = this.gameObject;
+            collision.gameObject.GetComponent<ItemScript>().onBelt = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Mouse")
-        {
-            MouseScript.overBelt = null;
-        }
-        
         if (collision.tag == "Item")
         {
             collision.gameObject.GetComponent<ItemScript>().onBelt = false;

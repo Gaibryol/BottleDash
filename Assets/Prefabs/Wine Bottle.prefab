@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 205300451190733364}
   - component: {fileID: 205300451190733365}
   - component: {fileID: 205300451190733367}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wine Bottle
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   moveSpeed: 1.85
   sortPos: 3
   notSelected: {fileID: 0}
-  selected: {fileID: 21300000, guid: c2c2c569a122c684d9308f36771ff78f, type: 3}
+  selected: {fileID: 21300000, guid: fa02b2d1754e7da4590c9b7da73278f5, type: 3}
   dying: 0
   effectManager: {fileID: 0}
   pickUp: {fileID: 8300000, guid: 4b4f4f0c936328244abe4b5552ad9cae, type: 3}
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.73, y: 2.53}
+    oldSize: {x: 0.85, y: 2.69}
     newSize: {x: 0.73, y: 2.53}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
