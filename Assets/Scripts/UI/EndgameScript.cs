@@ -103,7 +103,7 @@ public class EndgameScript : MonoBehaviour
 
             Invoke("Win", 0.5f);
             endgame = panel;
-            endgame.GetComponent<Image>().sprite = winPanel;
+            endgame.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = winPanel;
             saveScript.ChangePassedLevel(sScript.currentLevelNum);
 
             level.GetComponent<TextMeshProUGUI>().text = "Level " + (sScript.currentLevelNum + 1).ToString();
@@ -122,10 +122,9 @@ public class EndgameScript : MonoBehaviour
                 restartButton.transform.position = origPos;
                 nextButton.SetActive(true);
             }
-
             Invoke("Lose", 0.5f);
             endgame = panel;
-            endgame.GetComponent<Image>().sprite = losePanel;
+            endgame.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = losePanel;
             level.GetComponent<TextMeshProUGUI>().text = "Level " + (sScript.currentLevelNum + 1).ToString();
             coins.GetComponent<TextMeshProUGUI>().text = MoneyManager.amount.ToString();
             numCollect.GetComponent<TextMeshProUGUI>().text = sScript.numCollect.ToString();
