@@ -50,6 +50,8 @@ public class SpawnManager : MonoBehaviour
         done = false;
         playedQuota = false;
 
+        Application.targetFrameRate = 300;
+
         if (!playing)
         {
             effectManager.GetComponent<AudioSource>().Play();
@@ -147,6 +149,7 @@ public class SpawnManager : MonoBehaviour
         }
         if (timer > 10f && !done)
         {
+            Debug.Log(MoneyManager.amount.ToString() + " | " + currentLevel.GetComponent<LevelScript>().quota);
             if (MoneyManager.amount < currentLevel.GetComponent<LevelScript>().quota)
             {
                 // Lose
@@ -154,6 +157,7 @@ public class SpawnManager : MonoBehaviour
                 musicManager.GetComponent<AudioSource>().Stop();
                 effectManager.GetComponent<AudioSource>().Stop();
                 done = true;
+                return;
             }
             else if (MoneyManager.amount >= currentLevel.GetComponent<LevelScript>().quota)
             {
@@ -162,6 +166,7 @@ public class SpawnManager : MonoBehaviour
                 musicManager.GetComponent<AudioSource>().Stop();
                 effectManager.GetComponent<AudioSource>().Stop();
                 done = true;
+                return;
             }
         }
     }
